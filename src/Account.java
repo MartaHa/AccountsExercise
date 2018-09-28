@@ -6,9 +6,10 @@ public abstract class Account implements BaseInterestRate {
 
     String Owner;
     String SSNumbers;
-    int Balance;
+    double Balance;
     static int uniqueNumber = 1000;
     String AccountNumber;
+    double rate;
 
     public Account(String owner, String sSNumbers, int initialDeposit) {
         Owner = owner;
@@ -17,7 +18,7 @@ public abstract class Account implements BaseInterestRate {
         this.AccountNumber = setAccountNumber();
 
         //setting the Account number
-        System.out.println("Account created. The owner is : " + Owner + " The SS Numbers : " + sSNumbers + " The balance: " + Balance );
+        System.out.println("Account created. The owner is : " + Owner + " The SS Numbers : " + sSNumbers + " The balance: " + Balance);
         uniqueNumber++;
         setAccountNumber();
 
@@ -25,6 +26,8 @@ public abstract class Account implements BaseInterestRate {
     }
 
 //methods for both Accounts
+
+    public abstract void setRate();
 
     private String setAccountNumber() {
 
@@ -36,15 +39,31 @@ public abstract class Account implements BaseInterestRate {
         int accountUniqueNumber = uniqueNumber;
 
         //random number
-        int randomNumber =  random.nextInt(1099)-100;
+        int randomNumber = random.nextInt(1099) - 100;
         return lastSSDigits + accountUniqueNumber + randomNumber;
     }
 
 
+    private void calculateRate(double rate){
+        double moneyFromRate = Balance * rate;
+        Balance = Balance + moneyFromRate;
+    }
+
+
+    private void transferMoney(double amount, String toWho){
+        Balance = Balance - amount;
+
+    }
+
+    private void withdrawMoney(double amount){
+        Balance = Balance - amount;
+    }
+
+    
     public void showInfo() {
         System.out.println("Account owner: " + Owner
                 + "\n SSnumber: " + SSNumbers
-                +"\n Account Number is: " + AccountNumber
+                + "\n Account Number is: " + AccountNumber
                 + "\n Balance: " + Balance);
     }
 }

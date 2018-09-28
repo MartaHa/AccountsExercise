@@ -19,6 +19,14 @@ public class Checking extends Account {
 
     //methods for the Checking Account
 
+    @Override
+    public void setRate() {
+        rate = getRate() * 0.15;
+
+    }
+
+
+
 
     private void setDepositCard() {
 
