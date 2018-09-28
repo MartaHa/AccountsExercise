@@ -39,4 +39,12 @@ public abstract class Account implements BaseInterestRate {
         int randomNumber =  random.nextInt(1099)-100;
         return lastSSDigits + accountUniqueNumber + randomNumber;
     }
+
+
+    public void showInfo() {
+        System.out.println("Account owner: " + Owner
+                + "\n SSnumber: " + SSNumbers
+                +"\n Account Number is: " + AccountNumber
+                + "\n Balance: " + Balance);
+    }
 }

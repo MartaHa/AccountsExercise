@@ -1,19 +1,45 @@
+import java.util.Random;
+
 public class Savings extends Account {
 
 
     //properties for the savings Account
-
+    int SafetyDepositBoxNumber;
+    int SafetyDepositBoxCode;
 
     //constructor
 
     public Savings(String owner, String ssNumbers, int initialDeposit) {
+
         super(owner, ssNumbers, initialDeposit);
-        System.out.println("Savings account created. The owner is: " + owner);
-        AccountNumber = "2" +AccountNumber;
-        System.out.println("Account number is " + AccountNumber);
+        AccountNumber = "2" + AccountNumber;
+        setDepositBox();
+
     }
 
 
-
     //method for the Savings Account
+
+    private void setDepositBox() {
+        Random random = new Random();
+
+        //setting the number
+        SafetyDepositBoxNumber= (random.nextInt(1099) - 100);
+
+
+     //setting the code
+        SafetyDepositBoxCode = random.nextInt(10099) - 100;
+
+    }
+
+
+    public void showInfo() {
+        System.out.println("Savings Account has been created");
+        super.showInfo();
+        System.out.println("The Safety Deposit Box number is: " + SafetyDepositBoxNumber
+        + "\n The Safety Deposit Box Code is: " + SafetyDepositBoxCode);
+    }
+
+    ;
+
 }
